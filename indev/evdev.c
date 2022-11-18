@@ -164,38 +164,39 @@ void evdev_read(lv_indev_drv_t * drv, lv_indev_data_t * data)
 #if USE_XKB
                 data->key = xkb_process_key(in.code, in.value != 0);
 #else
-                switch(in.code) {
-                    case KEY_BACKSPACE:
-                        data->key = LV_KEY_BACKSPACE;
-                        break;
-                    case KEY_ENTER:
-                        data->key = LV_KEY_ENTER;
-                        break;
-                    case KEY_PREVIOUS:
-                        data->key = LV_KEY_PREV;
-                        break;
-                    case KEY_NEXT:
-                        data->key = LV_KEY_NEXT;
-                        break;
-                    case KEY_UP:
-                        data->key = LV_KEY_UP;
-                        break;
-                    case KEY_LEFT:
-                        data->key = LV_KEY_LEFT;
-                        break;
-                    case KEY_RIGHT:
-                        data->key = LV_KEY_RIGHT;
-                        break;
-                    case KEY_DOWN:
-                        data->key = LV_KEY_DOWN;
-                        break;
-                    case KEY_TAB:
-                        data->key = LV_KEY_NEXT;
-                        break;
-                    default:
-                        data->key = 0;
-                        break;
-                }
+                // switch(in.code) {
+                //     case KEY_BACKSPACE:
+                //         data->key = LV_KEY_BACKSPACE;
+                //         break;
+                //     case KEY_ENTER:
+                //         data->key = LV_KEY_ENTER;
+                //         break;
+                //     case KEY_PREVIOUS:
+                //         data->key = LV_KEY_PREV;
+                //         break;
+                //     case KEY_NEXT:
+                //         data->key = LV_KEY_NEXT;
+                //         break;
+                //     case KEY_UP:
+                //         data->key = LV_KEY_UP;
+                //         break;
+                //     case KEY_LEFT:
+                //         data->key = LV_KEY_LEFT;
+                //         break;
+                //     case KEY_RIGHT:
+                //         data->key = LV_KEY_RIGHT;
+                //         break;
+                //     case KEY_DOWN:
+                //         data->key = LV_KEY_DOWN;
+                //         break;
+                //     case KEY_TAB:
+                //         data->key = LV_KEY_NEXT;
+                //         break;
+                //     default:
+                //         data->key = 0;
+                //         break;
+                // }
+                data->key = in.code;
 #endif /* USE_XKB */
                 if (data->key != 0) {
                     /* Only record button state when actual output is produced to prevent widgets from refreshing */

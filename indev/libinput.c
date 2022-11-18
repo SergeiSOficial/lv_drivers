@@ -432,38 +432,39 @@ static void read_keypad(libinput_drv_state_t *state, struct libinput_event *even
 #if USE_XKB
       state->key_val = xkb_process_key_state(&(state->xkb_state), code, key_state == LIBINPUT_KEY_STATE_PRESSED);
 #else
-      switch(code) {
-        case KEY_BACKSPACE:
-          state->key_val = LV_KEY_BACKSPACE;
-          break;
-        case KEY_ENTER:
-          state->key_val = LV_KEY_ENTER;
-          break;
-        case KEY_PREVIOUS:
-          state->key_val = LV_KEY_PREV;
-          break;
-        case KEY_NEXT:
-          state->key_val = LV_KEY_NEXT;
-          break;
-        case KEY_UP:
-          state->key_val = LV_KEY_UP;
-          break;
-        case KEY_LEFT:
-          state->key_val = LV_KEY_LEFT;
-          break;
-        case KEY_RIGHT:
-          state->key_val = LV_KEY_RIGHT;
-          break;
-        case KEY_DOWN:
-          state->key_val = LV_KEY_DOWN;
-          break;
-        case KEY_TAB:
-          state->key_val = LV_KEY_NEXT;
-          break;
-        default:
-          state->key_val = 0;
-          break;
-      }
+      // switch(code) {
+      //   case KEY_BACKSPACE:
+      //     state->key_val = LV_KEY_BACKSPACE;
+      //     break;
+      //   case KEY_ENTER:
+      //     state->key_val = LV_KEY_ENTER;
+      //     break;
+      //   case KEY_PREVIOUS:
+      //     state->key_val = LV_KEY_PREV;
+      //     break;
+      //   case KEY_NEXT:
+      //     state->key_val = LV_KEY_NEXT;
+      //     break;
+      //   case KEY_UP:
+      //     state->key_val = LV_KEY_UP;
+      //     break;
+      //   case KEY_LEFT:
+      //     state->key_val = LV_KEY_LEFT;
+      //     break;
+      //   case KEY_RIGHT:
+      //     state->key_val = LV_KEY_RIGHT;
+      //     break;
+      //   case KEY_DOWN:
+      //     state->key_val = LV_KEY_DOWN;
+      //     break;
+      //   case KEY_TAB:
+      //     state->key_val = LV_KEY_NEXT;
+      //     break;
+      //   default:
+      //     state->key_val = code;
+      //     break;
+      // }
+      state->key_val = code;
 #endif /* USE_XKB */
       if (state->key_val != 0) {
         /* Only record button state when actual output is produced to prevent widgets from refreshing */
